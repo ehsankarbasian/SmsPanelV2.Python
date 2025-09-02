@@ -5,8 +5,8 @@ from ..base_requester import BaseRequester
 
 
 class Requestser(BaseRequester):
-    def __init__(self, headers: dict[str, str]) -> None:
-        super().__init__()
+    def __init__(self, headers: dict[str, str], logger) -> None:
+        super().__init__(logger)
         self._session = requests.Session()
         self._session.headers.update(headers)
 

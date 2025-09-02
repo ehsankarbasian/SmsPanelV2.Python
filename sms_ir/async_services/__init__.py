@@ -3,12 +3,15 @@ from typing import List, Optional
 from aiohttp import ClientResponse
 
 from .requester import Requestser
+from ..base_logger import get_default_logger
+
 
 class AsyncSmsIr:
     def __init__(
         self,
         api_key: str,
         linenumber: Optional[int] = None,
+        logger=get_default_logger(),
     ) -> None:
         headers = {
             "X-API-KEY": api_key,
@@ -17,7 +20,7 @@ class AsyncSmsIr:
         }
 
         self._linenumber = linenumber
-        self._requester = Requestser(headers)
+        self._requester = Requestser(headers, logger)
         
     async def close(self):
         """

@@ -4,8 +4,8 @@ from ..base_requester import BaseRequester
 
 
 class Requestser(BaseRequester):
-    def __init__(self, headers: dict[str, str]) -> None:
-        super().__init__()
+    def __init__(self, headers: dict[str, str], logger) -> None:
+        super().__init__(logger)
         self._session = ClientSession(base_url=self.endpoint, headers=headers)
         
     async def close(self):

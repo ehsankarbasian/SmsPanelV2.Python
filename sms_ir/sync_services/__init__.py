@@ -1,6 +1,7 @@
 from typing import List, Optional
 from requests.models import Response
 from .requester import Requestser
+from ..base_logger import get_default_logger
 
 
 class SmsIr:
@@ -8,6 +9,7 @@ class SmsIr:
         self,
         api_key: str,
         linenumber: Optional[int] = None,
+        logger=get_default_logger(),
     ) -> None:
         headers = {
             "X-API-KEY": api_key,
@@ -16,7 +18,7 @@ class SmsIr:
         }
 
         self._linenumber = linenumber
-        self._requester = Requestser(headers)
+        self._requester = Requestser(headers, logger)
 
     def send_sms(
         self,
