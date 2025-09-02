@@ -1,7 +1,10 @@
 import sys
 import logging
 
+from functools import cache
 
+
+@cache
 def get_default_logger():
     # setup logging
     log_level = logging.INFO
