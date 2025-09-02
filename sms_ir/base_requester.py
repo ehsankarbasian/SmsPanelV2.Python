@@ -8,14 +8,17 @@ class BaseRequester:
         self.endpoint = ENDPOINT
         
         # setup logging
-        self.log_level = logging.INFO
+        log_level = logging.INFO
 
         log_format = logging.Formatter("[%(asctime)s] [%(levelname)s] - %(message)s")
-        self.logger = logging.getLogger(__name__)
-        self.logger.setLevel(self.log_level)
+        logger = logging.getLogger(__name__)
+        logger.setLevel(log_level)
 
         # writing to stdout
         handler = logging.StreamHandler(sys.stdout)
-        handler.setLevel(self.log_level)
+        handler.setLevel(log_level)
         handler.setFormatter(log_format)
-        self.logger.addHandler(handler)
+        logger.addHandler(handler)
+        
+        # Set logger
+        self.logger = logger
