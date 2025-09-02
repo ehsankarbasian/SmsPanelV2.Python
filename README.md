@@ -16,6 +16,7 @@ from sms_ir import SmsIr
 sms_ir = SmsIr(
     api_key,
     linenumber,
+    logger #Optional
 )
 ```
 
